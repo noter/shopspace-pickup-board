@@ -23,7 +23,7 @@ export const OrderConfirmation = React.memo(function OrderConfirmation({
   order, 
   onClose 
 }: OrderConfirmationProps) {
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(5);
   const Icon = COMPANY_ICONS[order.company as keyof typeof COMPANY_ICONS];
   const showProgress = order.status === 'in_progress' || order.status === 'not_ready';
   const isDelayed = order.status === 'delayed';
@@ -68,20 +68,6 @@ export const OrderConfirmation = React.memo(function OrderConfirmation({
               className="group relative text-gray-400 hover:text-gray-500 transition-colors"
             >
               <X className="h-5 w-5" />
-              <div className="absolute -top-1 -right-1 h-4 w-4 flex items-center justify-center">
-                <div className="h-full w-full rounded-full border-2 border-gray-400 group-hover:border-gray-500" />
-                <div 
-                  className="absolute inset-0.5 rounded-full border-2 border-gray-400 group-hover:border-gray-500"
-                  style={{
-                    clipPath: `polygon(50% 50%, 50% 0%, ${
-                      50 + Math.cos((timeLeft / 60) * 2 * Math.PI - Math.PI / 2) * 50
-                    }% ${
-                      50 + Math.sin((timeLeft / 60) * 2 * Math.PI - Math.PI / 2) * 50
-                    }%)`
-                  }}
-                />
-              </div>
-              <span className="sr-only">Close in {timeLeft}s</span>
             </button>
           </div>
 

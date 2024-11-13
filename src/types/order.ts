@@ -13,6 +13,6 @@ export interface Order {
   orderNumber: string;
   status: OrderStatus;
   timestamp: string;
-  progress?: number;
+  progress: number;
   estimatedCompletionTime?: string;
 }
